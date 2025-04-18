@@ -5,9 +5,113 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="./src/style.css">
+    <title>Chat</title>
 </head>
 <body>
+<main class="chat">
+    <div class="user-panel">
+        <button class="user-panel__setting">Настройки</button>
+        <button class="user-panel__logout">Выйти</button>
+    </div>
+    <div class="message-window">
+        <ul class="message-list">
+            <li class="message message--outgoing">
+                <p class="message__text"><span class="message__author">Я: </span>Добрый день!</p>
+                <span class="message__time">18:45</span>
+            </li>
+            <li class="message message--incoming">
+                <p class="message__text"><span class="message__author">Собеседник: </span>Добрый день!</p>
+                <span class="message__time">18:45</span>
+            </li>
+            <li class="message message--incoming">
+                <p class="message__text"><span class="message__author">Собеседник: </span>А это второе и, кажется, оно
+                    очень
+                    длинное, чтобы поместиться на
+                    одной строке</p>
+                <span class="message__time">18:45</span>
+            </li>
+            <li class="message message--outgoing">
+                <p class="message__text"><span class="message__author">Я: </span>Добрый день!</p>
+                <span class="message__time">18:45</span>
+            </li>
+        </ul>
+    </div>
+    <form class="message-form">
+        <div class="message-form__container">
+            <input class="message-form__input" type="text" name="message" placeholder="Сообщение.."
+                   aria-label="Введите сообщение">
+            <button class="message-form__submit" type="submit" aria-label="Отправить сообщение">-></button>
+        </div>
+    </form>
 
+    <template id="message-template">
+        <li class="message">
+            <div class="message__container">
+                <span class="message__author"></span>
+                <span class="message__text">Добрый день!</span>
+            </div>
+            <span class="message__time">18:45</span>
+        </li>
+    </template>
+
+</main>
+<div class="popup" id="screen-setting">
+    <div class="popup__wrapper">
+        <div class="popup__header">
+            <span class="popup-header__text">Настройки</span>
+            <button class="popup-header__button">+</button>
+        </div>
+        <div class="popup__content">
+            <div class="popup-content__input-block">
+                <label for="popup-content__input-name" class="popup-content-input-block__input-label">Имя в чате</label>
+                <input class="popup-content-input-block__input" id="popup-content__input-name" type="text"
+                       placeholder="Введите имя"
+                       aria-label="Введите имя">
+            </div>
+            <button class="popup-content__button">-></button>
+        </div>
+    </div>
+</div>
+
+<div class="popup" id="potver">
+    <div class="popup__wrapper">
+        <div class="popup__header">
+            <span class="popup-header__text">Подтверждение</span>
+            <button class="popup-header__button">+</button>
+        </div>
+        <div class="popup__content">
+            <div class="popup-content__input-block">
+                <label for="popup-content__input-number" class="popup-content-input-block__input-label">Код:</label>
+                <input class="popup-content-input-block__input" id="popup-content__input-number" type="number"
+                       placeholder="Введите код"
+                       aria-label="Введите код">
+                <button class="popup-content__button">Войти</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup" id="autori">
+    <div class="popup__wrapper">
+        <div class="popup__header">
+            <span class="popup-header__text">Авторизация</span>
+            <button class="popup-header__button">+</button>
+        </div>
+        <div class="popup__content">
+            <div class="popup-content__input-block">
+                <label for="popup-content__input-email" class="popup-content-input-block__input-label">Почта:</label>
+                <input class="popup-content-input-block__input" id="popup-content__input-email" type="email"
+                       placeholder="Введите почту"
+                       aria-label="Введите почту">
+                <div class="popup-content__button-container">
+            <button class="popup-content__button">Получить код</button>
+            <button class="popup-content__button" id="popup-content__button2">Ввести код</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="module" src="./src/main.js"></script>
 </body>
 </html>
