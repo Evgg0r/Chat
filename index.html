@@ -63,52 +63,64 @@
             <button class="popup-header__button">+</button>
         </div>
         <div class="popup__content">
-            <div class="popup-content__input-block">
-                <label for="popup-content__input-name" class="popup-content-input-block__input-label">Имя в чате</label>
-                <input class="popup-content-input-block__input" id="popup-content__input-name" type="text"
-                       placeholder="Введите имя"
-                       aria-label="Введите имя">
-            </div>
-            <button class="popup-content__button">-></button>
+            <form class="popup-form">
+                <div class="popup-content__input-block">
+                    <label for="popup-content__input-name" class="popup-content-input-block__input-label">Имя в
+                        чате</label>
+                    <input class="popup-content-input-block__input" id="popup-content__input-name" type="text"
+                           placeholder="Введите имя"
+                           aria-label="Введите имя">
+                </div>
+                <button class="popup-content__button">-></button>
+            </form>
         </div>
     </div>
 </div>
 
-<div class="popup" id="potver">
+<div class="popup" id="code-confirmation">
     <div class="popup__wrapper">
         <div class="popup__header">
             <span class="popup-header__text">Подтверждение</span>
             <button class="popup-header__button">+</button>
         </div>
         <div class="popup__content">
-            <div class="popup-content__input-block">
-                <label for="popup-content__input-number" class="popup-content-input-block__input-label">Код:</label>
-                <input class="popup-content-input-block__input" id="popup-content__input-number" type="number"
-                       placeholder="Введите код"
-                       aria-label="Введите код">
-                <button class="popup-content__button">Войти</button>
-            </div>
+            <form class="popup-form">
+                <div class="popup-content__input-block">
+                    <label for="popup-content__input-code" class="popup-content-input-block__input-label">Код:</label>
+                    <input class="popup-content-input-block__input" id="popup-content__input-code" type="text"
+                           placeholder="Введите код"
+                           aria-label="Введите код">
+                    <button class="popup-content__button" id="popup-content__btn-enter" type="submit">Войти</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
-<div class="popup" id="autori">
+<div class="popup" id="authorization">
     <div class="popup__wrapper">
         <div class="popup__header">
             <span class="popup-header__text">Авторизация</span>
             <button class="popup-header__button">+</button>
         </div>
         <div class="popup__content">
-            <div class="popup-content__input-block">
-                <label for="popup-content__input-email" class="popup-content-input-block__input-label">Почта:</label>
-                <input class="popup-content-input-block__input" id="popup-content__input-email" type="email"
-                       placeholder="Введите почту"
-                       aria-label="Введите почту">
-                <div class="popup-content__button-container">
-            <button class="popup-content__button">Получить код</button>
-            <button class="popup-content__button" id="popup-content__button2">Ввести код</button>
+            <form class="popup-form">
+                <div class="popup-content__input-block">
+                    <label for="popup-content__input-email"
+                           class="popup-content-input-block__input-label">Почта:</label>
+                    <input class="popup-content-input-block__input" id="popup-content__input-email" type="email"
+                           placeholder="Введите почту"
+                           aria-label="Введите почту">
+                    <div class="popup-content__button-container">
+                        <button class="popup-content__button" id="popup-content__btn-send-code" type="submit">Получить
+                            код
+                        </button>
+                        <button class="popup-content__button" id="popup-content__btn-verify-code" type="submit">Ввести
+                            код
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

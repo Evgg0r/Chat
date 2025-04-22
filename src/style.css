@@ -15,7 +15,7 @@ main {
     height: 533px;
     padding: 8px;
     background: #fff;
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 8px;
 }
@@ -167,20 +167,30 @@ input {
     height: 32px;
 }
 
-#potver .popup-content-input-block__input, #autori .popup-content-input-block__input {
+#code-confirmation .popup-content-input-block__input, #authorization .popup-content-input-block__input {
     width: 245px;
 }
 
-#potver .popup-content__button {
+#code-confirmation .popup-content__button {
     width: 62px;
 }
 
-#potver .popup__wrapper, #autori .popup__wrapper {
+#code-confirmation .popup__wrapper, #authorization .popup__wrapper {
     gap: 70px;
 }
 
-#autori .popup-content__button {
+#authorization .popup-content__button {
     width: 120px;
 }
 
-popup-content__button-container
+#authorization {
+    display: flex;
+}
+
+#code-confirmation {
+    display: none;
+}
+
+.chat {
+    display: none;
+}
