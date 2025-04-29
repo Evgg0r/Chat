@@ -15,7 +15,7 @@ main {
     height: 533px;
     padding: 8px;
     background: #fff;
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 8px;
 }
@@ -59,10 +59,11 @@ button {
     height: 437px;
     padding: 8px;
     display: flex;
+    overflow: hidden;
 }
 
 .message--incoming {
-    align-self: flex-start;
+    align-self: flex-end;
 }
 
 .message__time {
@@ -79,8 +80,11 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    justify-content: flex-end;
+    /*justify-content: flex-end;*/
     gap: 8px;
+    overflow-y: scroll;
+    width: 100%;
+    max-height: 100%;
 
 }
 
@@ -90,7 +94,14 @@ li {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+
 }
+
+.message__text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 
 input {
     border: 1px solid #000;
@@ -117,7 +128,7 @@ input {
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     padding: 8px;
-    display: none;
+    display: flex;
     z-index: 1000;
     gap: 8px;
 
@@ -149,6 +160,12 @@ input {
     border: none;
     font-size: 24px;
     line-height: 0.7;
+}
+
+.popup-form__wrapper {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
 }
 
 .popup__content {
@@ -183,14 +200,6 @@ input {
     width: 120px;
 }
 
-#authorization {
-    display: flex;
-}
-
-#code-confirmation {
-    display: none;
-}
-
-.chat {
+.hidden {
     display: none;
 }
