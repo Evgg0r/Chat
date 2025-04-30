@@ -1,52 +1,53 @@
 import {
     MESSAGE_TEXT_INPUT,
     MESSAGE_FORM,
-    MESSAGE_LIST,
-    MESSAGE_TEMPLATE,
     BUTTON_SETTING,
     INPUT_EMAIL_FORM,
     BTN_SEND_CODE,
     SCREEN_AUTHORIZATION,
     SCREEN_CODE_CONFIRMATION,
+    SCREEN_SETTING,
     BTN_ENTER,
     INPUT_CODE_FORM,
     SCREEN_CHAT,
     URL,
     URL_VERIFICATION,
+    URL_UPDATE_NAME,
+    ULR_LOADING_MESSAGES,
+    INPUT_NAME_FORM,
+    BTN_NEW_NAME,
 } from "./constants.js";
 
 import {
-    currentTime
+    renderMessageUser,
+    renderAllMessages,
+    loadTokenUser,
+    toggleHiddenElements,
 } from "./utils.js";
+
+import {
+    fetchUser,
+    fetchUpdateNameUser,
+    fetchLoadingMessages
+} from "./fetch.js";
+
+
+export let currentNameUser = "Я:";
+let emailCurrent = '';
 
 
 BUTTON_SETTING.addEventListener('click', showPopup)
 
 function showPopup() {
-    document.querySelector('.popup').style.display = 'flex';
+    toggleHiddenElements(SCREEN_SETTING)
     document.querySelector('.chat').classList.add('blur');
 }
 
 document.querySelector('.popup-header__button').addEventListener('click', function () {
-    document.querySelector('.popup').style.display = 'none';
+    toggleHiddenElements(SCREEN_SETTING)
     document.querySelector('.chat').classList.remove('blur');
 });
 
-const renderMessage = (text, isInComing = true) => {
-    const templateContent = MESSAGE_TEMPLATE.content.cloneNode(true);
-    const templateLi = templateContent.querySelector('.message');
-    const templateLiText = templateLi.querySelector('.message__text');
-    const templateLiAuthor = templateLi.querySelector('.message__author')
-    const templateLiTime = templateLi.querySelector('.message__time')
-
-
-    templateLi.classList.add(isInComing ? "message--outgoing" : "message--incoming");
-    templateLiAuthor.textContent = isInComing === true ? "Я:" : "Собеседник:";
-    templateLiText.textContent = text;
-    templateLiTime.textContent = currentTime();
-
-    MESSAGE_LIST.appendChild(templateContent)
-}
 
 MESSAGE_FORM.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -57,18 +58,14 @@ MESSAGE_FORM.addEventListener('submit', (e) => {
         return;
     }
 
-    renderMessage(messageValue);
+    renderMessageUser(messageValue);
     e.target.reset();
 });
-
-
-let emailCurrent = ''
 
 BTN_SEND_CODE.addEventListener('click', (e) => {
         e.preventDefault()
 
         const emailValue = INPUT_EMAIL_FORM.value.trim();
-
 
         if (!emailValue) {
             alert("Введите email.");
@@ -80,85 +77,65 @@ BTN_SEND_CODE.addEventListener('click', (e) => {
             return;
         }
 
-        fetchSer(URL, emailValue)
+        fetchUser(URL, emailValue)
             .then(response => {
                 emailCurrent = emailValue
-                SCREEN_AUTHORIZATION.style.display = "none";
-                SCREEN_CODE_CONFIRMATION.style.display = "flex"
+                alert(response.message);
+                toggleHiddenElements(SCREEN_AUTHORIZATION, SCREEN_CODE_CONFIRMATION)
             })
             .catch(error => {
-                console.error('Ошибка:', error);
-                throw error;
+                alert(`Ошибка: ${error}`);
             });
     }
 )
 
-BTN_ENTER.addEventListener('click',  (e) => {
+BTN_ENTER.addEventListener('click', (e) => {
         e.preventDefault()
 
-        const valueCode = INPUT_CODE_FORM.value.trim();
-
+        let valueCode = INPUT_CODE_FORM.value.trim();
 
         if (!valueCode) {
             alert("Введите код.");
             return;
         }
 
-        fetchSer(URL_VERIFICATION, emailCurrent, valueCode)
+        fetchUser(URL_VERIFICATION, emailCurrent, valueCode)
             .then(response => {
-                SCREEN_CODE_CONFIRMATION.style.display = "none"
-                SCREEN_CHAT.style.display = "flex"
+                document.cookie = `tokenUser=${encodeURIComponent(response.token)}; path/`
+                alert(!response.message ? 'Вход выполнен' : null);
+                toggleHiddenElements(SCREEN_CODE_CONFIRMATION, SCREEN_CHAT)
+            })
+            .catch(() => {
+                alert(`Сообщения с сервера не загружены`);
+            });
+
+        fetchLoadingMessages(ULR_LOADING_MESSAGES, loadTokenUser())
+            .then(response => {
+                renderAllMessages(response)
             })
             .catch(error => {
-                console.error('Ошибка:', error);
-                throw error;
-            });
+                console.error("Ошибка в цепочке Promise:", error);
+            })
     }
 );
 
+BTN_NEW_NAME.addEventListener('click', (e) => {
+    e.preventDefault();
 
-async function fetchSer(url, email, code) {
-    try {
-        const bodyData = code === undefined ? {email: email} : {verificationCode: code, email: email};
+    let nameUpdate = INPUT_NAME_FORM.value.trim()
 
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(bodyData)
-        });
-
-        if (!response.ok) throw new Error(`${response.status}`);
-    } catch (error) {
-        console.error("Ошибка:", error);
-        throw error;
+    if (!nameUpdate) {
+        alert("Введите новое имя.");
+        return;
     }
-}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    fetchUpdateNameUser(URL_UPDATE_NAME, loadTokenUser(), nameUpdate)
+        .then(() => {
+            alert(`Имя изменено ${nameUpdate}`);
+            currentNameUser = nameUpdate;
+        })
+        .catch(() => {
+            alert(`Имя пользователя на ${nameUpdate} не изменен`);
+        });
+})
 

@@ -9,7 +9,7 @@
     <title>Chat</title>
 </head>
 <body>
-<main class="chat">
+<main class="chat hidden">
     <div class="user-panel">
         <button class="user-panel__setting">Настройки</button>
         <button class="user-panel__logout">Выйти</button>
@@ -26,9 +26,7 @@
             </li>
             <li class="message message--incoming">
                 <p class="message__text"><span class="message__author">Собеседник: </span>А это второе и, кажется, оно
-                    очень
-                    длинное, чтобы поместиться на
-                    одной строке</p>
+                    очень длинное, чтобы поместиться на одной строке</p>
                 <span class="message__time">18:45</span>
             </li>
             <li class="message message--outgoing">
@@ -56,7 +54,7 @@
     </template>
 
 </main>
-<div class="popup" id="screen-setting">
+<div class="popup hidden" id="screen-setting">
     <div class="popup__wrapper">
         <div class="popup__header">
             <span class="popup-header__text">Настройки</span>
@@ -64,20 +62,22 @@
         </div>
         <div class="popup__content">
             <form class="popup-form">
-                <div class="popup-content__input-block">
-                    <label for="popup-content__input-name" class="popup-content-input-block__input-label">Имя в
-                        чате</label>
-                    <input class="popup-content-input-block__input" id="popup-content__input-name" type="text"
-                           placeholder="Введите имя"
-                           aria-label="Введите имя">
+                <div class="popup-form__wrapper">
+                    <div class="popup-content__input-block">
+                        <label for="popup-content__input-name" class="popup-content-input-block__input-label">Имя в
+                            чате</label>
+                        <input class="popup-content-input-block__input" id="popup-content__input-name" type="text"
+                               placeholder="Введите имя"
+                               aria-label="Введите имя">
+                    </div>
+                    <button class="popup-content__button" id="popup-content__btn-new-name">-></button>
                 </div>
-                <button class="popup-content__button">-></button>
             </form>
         </div>
     </div>
 </div>
 
-<div class="popup" id="code-confirmation">
+<div class="popup hidden" id="code-confirmation">
     <div class="popup__wrapper">
         <div class="popup__header">
             <span class="popup-header__text">Подтверждение</span>
