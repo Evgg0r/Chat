@@ -110,17 +110,17 @@ input {
     padding-left: 8px;
 }
 
-.message-form__container{
+.message-form__container {
     display: flex;
     justify-content: space-between;
 }
 
-.message-form__submit, .popup-content__button{
+.message-form__submit, .popup-content__button {
     width: 30px;
     height: 32px;
 }
 
-.popup{
+.popup {
     position: fixed;
     top: 0;
     left: 0;
@@ -173,6 +173,7 @@ input {
     align-items: flex-end;
     justify-content: space-between;
 }
+
 .popup-content__input-block {
     display: flex;
     flex-direction: column;

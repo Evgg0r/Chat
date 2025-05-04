@@ -16,23 +16,7 @@
     </div>
     <div class="message-window">
         <ul class="message-list">
-            <li class="message message--outgoing">
-                <p class="message__text"><span class="message__author">Я: </span>Добрый день!</p>
-                <span class="message__time">18:45</span>
-            </li>
-            <li class="message message--incoming">
-                <p class="message__text"><span class="message__author">Собеседник: </span>Добрый день!</p>
-                <span class="message__time">18:45</span>
-            </li>
-            <li class="message message--incoming">
-                <p class="message__text"><span class="message__author">Собеседник: </span>А это второе и, кажется, оно
-                    очень длинное, чтобы поместиться на одной строке</p>
-                <span class="message__time">18:45</span>
-            </li>
-            <li class="message message--outgoing">
-                <p class="message__text"><span class="message__author">Я: </span>Добрый день!</p>
-                <span class="message__time">18:45</span>
-            </li>
+<!--Тут будут сообщения-->
         </ul>
     </div>
     <form class="message-form">
@@ -81,7 +65,7 @@
     <div class="popup__wrapper">
         <div class="popup__header">
             <span class="popup-header__text">Подтверждение</span>
-            <button class="popup-header__button">+</button>
+            <button class="popup-header__button" id="popup-header__btn-closed-code-confirmation">+</button>
         </div>
         <div class="popup__content">
             <form class="popup-form">
@@ -101,7 +85,7 @@
     <div class="popup__wrapper">
         <div class="popup__header">
             <span class="popup-header__text">Авторизация</span>
-            <button class="popup-header__button">+</button>
+            <button class="popup-header__button" id="popup-header__btn-closed-authorization">+</button>
         </div>
         <div class="popup__content">
             <form class="popup-form">

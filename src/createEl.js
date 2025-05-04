@@ -1,4 +1,5 @@
-import {MESSAGE_TEMPLATE} from "./constants.js";
+import {MESSAGE_TEMPLATE} from "./const/selectors.js";
+
 
 export function createMessageElement(text, author, isOutgoing, time) {
     const templateContent = MESSAGE_TEMPLATE.content.cloneNode(true);
