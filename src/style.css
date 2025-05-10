@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+}
+
+main {
+    width: 320px;
+    height: 533px;
+    padding: 8px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+main.blur {
+    filter: blur(2px);
+}
+
+button {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    background: none;
+    border: 1px solid #000;
+}
+
+
+.user-panel {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.user-panel__setting {
+    width: 98px;
+    height: 32px;
+}
+
+.user-panel__logout {
+    width: 66px;
+    height: 32px;
+}
+
+.message-window {
+    border: 1px solid #000;
+    width: 304px;
+    height: 437px;
+    padding: 8px;
+    display: flex;
+}
+
+.message--incoming {
+    align-self: flex-start;
+}
+
+.message__time {
+    display: block;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 14px;
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+li {
+    padding: 8px;
+    background: #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+input {
+    border: 1px solid #000;
+    width: 267px;
+    height: 32px;
+    padding-left: 8px;
+}
+
+.message-form{
+    display: flex;
+    justify-content: space-between;
+}
+
+.message-form__submit, .popup-content__button{
+    width: 30px;
+    height: 32px;
+}
+
+.popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px;
+    display: none;
+    z-index: 1000;
+    gap: 8px;
+}
+
+.popup__wrapper {
+    background: white;
+    padding: 14px;
+    width: 273px;
+    height: 319px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.popup__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup-header__text {
+    display: block;
+}
+
+.popup-header__button {
+    transform: rotate(45deg);
+    opacity: 0.45;
+    background: none;
+    border: none;
+    font-size: 24px;
+    line-height: 0.7;
+}
+
+.popup__content {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.popup-content__input-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.popup-content-input-block__input {
+    width: 207px;
+    height: 32px;
+}
